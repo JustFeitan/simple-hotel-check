@@ -1,0 +1,57 @@
+const useStyles = makeStyles()((theme) => ({
+    form: {
+        width: '100%',
+        height: '100%',
+        display:'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    }
+}))
+
+const useStyles = makeStyles()((theme) => ({
+    formWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '32px',
+        gap: '32px',
+        width: '409px',
+        height: '382px',
+        backgroundColor: '#FFFFFF',
+        zIndex: 1,
+        boxShadow: '0px 4px 33px rgba(0, 0, 0, 0.04)',
+        borderRadius: '16px',
+    }
+}))
+
+
+const useStyles = makeStyles()((theme) => ({
+    fullscreenBgImage: {
+        position: 'absolute',
+        right: 0,
+        left: 0,
+        height: `100vh`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        opacity: '60%',
+        filter: 'blur(8px)',
+        WebkitFilter: 'blur(8px)',
+        zIndex: -100,
+    }
+}))
+
+
+const useStyles = makeStyles()((theme) => ({
+    login: {
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+}))

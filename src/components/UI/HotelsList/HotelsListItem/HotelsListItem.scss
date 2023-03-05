@@ -1,0 +1,100 @@
+@use 'src/styles/variables';
+
+.hotel-item {
+  width: calc(100% - 14px);
+  height: 100px;
+  padding: 19px 10px 16px 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid rgba(135, 135, 135, 0.2);
+
+  &__left {
+    display: flex;
+    flex-wrap: nowrap;
+
+    &__icon {
+      margin-right: 24px;
+    }
+
+    &__bio {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &__name {
+        max-width: 340px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight: 300;
+        font-size: variables.$middle-font-size;
+        line-height: 22px;
+      }
+
+      &__dates {
+        & span {
+          margin: 0 10px 0 16px;
+        }
+        margin-bottom: 7px;
+        font-weight: 400;
+        font-size: variables.$semi-small-size;
+        line-height: 22px;
+        letter-spacing: -0.408px;
+        color: variables.$secondary-text-color;
+      }
+
+      &__rating {
+
+      }
+    }
+  }
+
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    &__to-favorite-btn {
+      position: relative;
+      top: -5px;
+      & > svg > path {
+        fill: transparent;
+        &:hover {
+          fill: #EBEBEB;
+        }
+      }
+      &--active > svg > path {
+        &:hover {
+          stroke: #E55858;
+          fill: #E55858;
+        }
+        stroke: #E55858;
+        fill: #E55858;
+      }
+
+      margin-bottom: 21px;
+    }
+
+    &__price {
+      display: flex;
+      & p {
+        display: flex;
+        align-items: flex-end;
+        margin-right: 10px;
+        font-weight: 300;
+        font-size: variables.$tiny-font-size;
+        line-height: 19px;
+      }
+      & span {
+        display: flex;
+        align-items: flex-end;
+        font-weight: 400;
+        font-size: variables.$middle-font-size;
+        line-height: 22px;
+      }
+    }
+  }
+}

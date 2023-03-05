@@ -1,12 +1,11 @@
 import {all, call, spawn} from "redux-saga/effects";
+import {watchLoginUser} from "./loginSaga/loginSaga";
+import {watchLogoutUser} from "./logoutSaga/logoutSaga";
+import {watchHotelsSaga} from "./hotelsSaga/hotelsSaga";
 
-
-export function* loadUser() {
-    console.log('awae')
-}
 
 export default function* rootSaga() {
-    const sagas = [loadUser]
+    const sagas = [watchLoginUser, watchLogoutUser, watchHotelsSaga]
 
     yield all(sagas.map(saga => {
         return spawn(function* () {

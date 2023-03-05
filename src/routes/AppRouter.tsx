@@ -1,16 +1,26 @@
-import React from 'react';
+import {Suspense} from 'react';
 import {Route, Routes} from "react-router-dom";
-import {Layout, LoginPage, HotelsPage} from "../pages";
+import {HotelsPage, Layout, LoginPage} from "../pages";
+import AuthRequired from "../hoc/AuthRequired";
+
 
 
 const AppRouter = () => {
     return (
         <Routes>
             <Route path='/' element={<Layout/>}>
-                <Route index element={<LoginPage/>}/>
-                <Route path='/hotels' element={<HotelsPage/>}/>
+                <Route index element={
+                    <AuthRequired>
+                        <HotelsPage/>
+                    </AuthRequired>
+                }/>
             </Route>
 
+            <Route path='/login' element={
+                <Suspense>
+                    <LoginPage/>
+                </Suspense>
+            }/>
         </Routes>
     );
 };

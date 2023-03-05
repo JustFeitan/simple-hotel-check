@@ -1,0 +1,24 @@
+.hotel-list {
+  overflow-y: scroll;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 2px;
+    margin-left: 14px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #E7E7E7;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #41522E;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+   // background: dodgerblue;
+  }
+}

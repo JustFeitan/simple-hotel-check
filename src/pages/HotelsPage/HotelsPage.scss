@@ -1,0 +1,64 @@
+@use 'src/styles/variables';
+
+.hotels-page {
+  height: calc(100% - 26px);
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: space-between;
+
+  &__left-blocks {
+    width: 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__location {
+      margin-bottom: 24px;
+    }
+
+    &__favorites {
+      height: 100%;
+    }
+  }
+
+
+}
+
+.hotels-page .hotels-page__results {
+  width: 664px;
+  justify-content: start;
+
+  &__favorites-count {
+    align-self: start;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 22px;
+    margin-bottom: 30px;
+  }
+
+  &__header {
+    width: 100%;
+    margin: 0 0 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__location {
+      margin: 0;
+      font-weight: 500;
+      font-size: variables.$large-font-size;
+      line-height: 38px;
+
+      & svg {
+        margin: 0 10px;
+      }
+    }
+
+    &__check-in-date {
+      margin: 0;
+      font-weight: 400;
+      font-size: variables.$big-font-size;
+      line-height: 28px;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.find-hotels-form *.input__label{
+  font-weight: 500;
+  line-height: 19px;
+}
+.find-hotels-form > :not(:last-of-type){
+  margin-bottom: 16px;
+}
