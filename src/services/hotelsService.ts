@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { FindHotelsRequest, IFavoriteHotelsRequest } from "../models/hotels";
 
-export const BASE_URL = "http://engine.hotellook.com/api/v2/cache.json";
+export const BASE_URL = "https://engine.hotellook.com/api/v2/cache.json";
 
 export const hotelsService = {
     getHotelsByLocationAndDates: async (
