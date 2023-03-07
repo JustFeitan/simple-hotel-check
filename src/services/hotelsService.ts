@@ -7,7 +7,7 @@ export const BASE_URL = "http://engine.hotellook.com/api/v2/cache.json";
 export const hotelsService = {
     getHotelsByLocationAndDates: async (
         { location, checkOutDate, checkInDate, page, limit }: FindHotelsRequest,
-        signal?: AbortSignal
+        signal: AbortSignal
     ) => {
         return await axios.get(
             BASE_URL + `?location=${location}&currency=rub&checkIn=${checkInDate}&checkOut=${checkOutDate}`,

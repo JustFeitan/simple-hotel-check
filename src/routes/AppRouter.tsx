@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import AuthRequired from "../hoc/AuthRequired";
 import { HotelsPage, Layout, LoginPage } from "../pages";
+import PageNotFounded from "../pages/PageNotFounded/PageNotFounded";
 
 const AppRouter = () => {
     return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
                     </Suspense>
                 }
             />
+            <Route path="/*" element={<PageNotFounded />} />
         </Routes>
     );
 };

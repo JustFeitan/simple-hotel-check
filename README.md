@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Тестовое задание для Junior Frontend Developer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Необходимо реализовать web приложение для поиска отелей, которое имеет
+два экрана.
 
 ## Available Scripts
 

@@ -4,9 +4,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import Form from "../../components/UI/Form/Form";
-import FormWrapper from "../../components/UI/FormWrapper/FormWrapper";
 import FullScreenImageContainer from "../../components/UI/FullScreenImageContainer/FullScreenImageContainer";
 import Input from "../../components/UI/Input/Input";
+import PaperWrapper from "../../components/UI/PaperWrapper/PaperWrapper";
 import Button from "../../components/UI/buttons/Button/Button";
 
 import { useActions, useAppSelector } from "../../hooks/redux";
@@ -59,7 +59,7 @@ const LoginPage: FC = () => {
     return (
         <div className="login-page">
             <FullScreenImageContainer backgroundImg={backgroundLogin} />
-            <FormWrapper>
+            <PaperWrapper>
                 <Form onSubmit={handleSubmit(onLoginSubmit)}>
                     <h2>Simple Hotel Check</h2>
                     <Input
@@ -78,7 +78,7 @@ const LoginPage: FC = () => {
                         Войти
                     </Button>
                 </Form>
-            </FormWrapper>
+            </PaperWrapper>
         </div>
     );
 };

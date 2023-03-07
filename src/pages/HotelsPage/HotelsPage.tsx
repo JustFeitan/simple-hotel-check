@@ -1,9 +1,9 @@
 import React, { FC, useEffect } from "react";
 
 import FindHotelsForm from "../../components/FindHotelsForm/FindHotelsForm";
-import FormWrapper from "../../components/UI/FormWrapper/FormWrapper";
 import { HotelsImageSlider } from "../../components/UI/HotelsImageSlider/HotelsImageSlider";
 import RightArrowIcon from "../../components/UI/Icons/RightArrowIcon";
+import PaperWrapper from "../../components/UI/PaperWrapper/PaperWrapper";
 import SortButton from "../../components/UI/buttons/SortButton/SortButton";
 import FavoriteHotelsListItem from "../../components/UI/lists/HotelsList/FavoriteHotelListItem/FavoriteHotelListItem";
 import HotelsListItem from "../../components/UI/lists/HotelsList/HotelListItem/HotelListItem";
@@ -69,10 +69,10 @@ const HotelsPage: FC = () => {
     return (
         <div className="hotels-page">
             <div className="hotels-page__left-blocks">
-                <FormWrapper className="hotels-page__left-blocks__location">
+                <PaperWrapper className="hotels-page__left-blocks__location">
                     <FindHotelsForm />
-                </FormWrapper>
-                <FormWrapper className="hotels-page__left-blocks__favorites">
+                </PaperWrapper>
+                <PaperWrapper className="hotels-page__left-blocks__favorites">
                     <h3 className="hotels-page__left-blocks__favorites__title">Избранное</h3>
                     <div className="hotels-page__left-blocks__favorites__sort">
                         <SortButton
@@ -101,10 +101,10 @@ const HotelsPage: FC = () => {
                             renderItem={(hotel) => <FavoriteHotelsListItem key={hotel.hotelId} hotel={hotel} />}
                         />
                     )}
-                </FormWrapper>
+                </PaperWrapper>
             </div>
 
-            <FormWrapper className="hotels-page__results">
+            <PaperWrapper className="hotels-page__results">
                 {requestedHotelsData && (
                     <div className="hotels-page__results__header">
                         <h1 className="hotels-page__results__header__location">
@@ -121,15 +121,16 @@ const HotelsPage: FC = () => {
                     <span>{sortedFavoriteHotels.length}</span> {favoriteCountNoun}
                 </span>
                 {!hotels && !isResultHotelsLoading ? (
-                    <h1>Не было найдено таких отелей, прпробуйте выбрать другие параметры поиска</h1>
+                    <h3>Не было найдено таких отелей, прпробуйте выбрать другие параметры поиска</h3>
                 ) : (
                     <HotelsList
+                        isLoading={isResultHotelsLoading}
                         hotels={hotels}
                         error={resultHotelsError}
                         renderItem={(hotel) => <HotelsListItem key={hotel.hotelId} hotel={hotel} />}
                     />
                 )}
-            </FormWrapper>
+            </PaperWrapper>
         </div>
     );
 };
