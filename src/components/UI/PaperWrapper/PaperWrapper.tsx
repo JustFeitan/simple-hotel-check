@@ -1,12 +1,12 @@
 import React, { ComponentProps, FC } from "react";
 
-import "./FormWrapper.scss";
+import "./PapperWrapper.scss";
 
 interface LoginFormWrapperProps extends ComponentProps<"div"> {
     width?: number;
 }
 
-const FormWrapper: FC<LoginFormWrapperProps> = ({ children, className, width, ...props }) => {
+const PapperWrapper: FC<LoginFormWrapperProps> = ({ children, className, width, ...props }) => {
     const optionalStyles = {
         // width: width ?? 409 + 'px',
     };
@@ -17,4 +17,4 @@ const FormWrapper: FC<LoginFormWrapperProps> = ({ children, className, width, ..
     );
 };
 
-export default FormWrapper;
+export default PapperWrapper;
