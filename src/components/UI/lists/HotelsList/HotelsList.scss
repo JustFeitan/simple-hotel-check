@@ -1,0 +1,6 @@
+@use "../../../../styles/mixins";
+
+.hotel-list {
+    height: 100%;
+    @include mixins.scroll-setup;
+}

@@ -1,17 +1,17 @@
 .fullscreen-bg-img {
-  position: absolute;
-  right: 0;
-  left: 0;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  opacity: 60%;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  z-index: -1;
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 60%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    z-index: -1;
 }

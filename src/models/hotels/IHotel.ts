@@ -1,4 +1,4 @@
-import {IHotelLocation} from "./IHotelLocation";
+import { IHotelLocation } from "./IHotelLocation";
 
 export interface IHotel {
     hotelId: number;

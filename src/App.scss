@@ -2,21 +2,20 @@
 @use "styles/variables";
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #F4F4F4;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  color: variables.$main-text-color;
+    background-color: #f4f4f4;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    color: variables.$main-text-color;
 }
 .app {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
-

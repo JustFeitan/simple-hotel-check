@@ -1,16 +1,18 @@
 .slider {
-  min-width: 100%;
-  max-width: 100%;
-  margin-bottom: 28px;
+    min-width: 100%;
+    max-width: 100%;
+    margin-bottom: 24px;
 }
-.slick-image{
-  width: 164px;
-  height: 149px;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+.slick-image {
+    width: 164px;
+    height: 149px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
 }
 .slick-slide {
-
-  padding: 0 3px;
-  box-sizing: border-box;
+    padding: 0 3px;
+    box-sizing: border-box;
+}
+.slick-slide div:focus {
+    outline: none;
 }

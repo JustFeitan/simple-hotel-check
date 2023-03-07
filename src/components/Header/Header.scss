@@ -1,25 +1,27 @@
-@use '../../styles/variables';
+@use "../../styles/variables";
 .header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 32px;
-  height: 91px;
-  &__title{
-    font-size: variables.$big-font-size;
-    font-weight: 500;
-    line-height: 28px;
-  }
-
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    height: 91px;
+    &__title {
+        font-size: variables.$big-font-size;
+        font-weight: 500;
+        line-height: 28px;
+    }
 }
 .header .header__logout-btn {
-  background: transparent;
-  color: black;
-  padding: 5px;
-  transition-duration: 0.3s;
-  &:hover {
-    background: lightgray;
-
-  }
+    background: transparent;
+    color: variables.$main-text-color;
+    padding: 5px;
+    transition-duration: 0.3s;
+    font-weight: 400;
+    font-size: variables.$main-font-size;
+    line-height: 20px;
+    letter-spacing: -0.408px;
+    &:hover {
+        background: lightgray;
+    }
 }

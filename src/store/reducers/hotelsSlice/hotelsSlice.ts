@@ -1,23 +1,23 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IHotel} from "../../../models/hotels/IHotel";
-import {FindHotelsRequest} from "../../../models/hotels/FindHotelsRequest";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+import { FindHotelsRequest, IHotel } from "../../../models/hotels";
 
 interface FindHotelsState {
     hotels: IHotel[];
-    requestHotelsData: FindHotelsRequest | null;
+    requestedHotelsData: FindHotelsRequest | null;
     isLoading: boolean;
-    error: string
+    error: string;
 }
 
 const initialState: FindHotelsState = {
     hotels: [],
-    requestHotelsData: null,
+    requestedHotelsData: null,
     isLoading: false,
-    error: '',
-}
+    error: "",
+};
 
 export const findHotelsSlice = createSlice({
-    name: 'hotels',
+    name: "hotels",
     initialState,
     reducers: {
         setHotels: (state, action: PayloadAction<IHotel[]>) => {
@@ -32,9 +32,7 @@ export const findHotelsSlice = createSlice({
             state.isLoading = false;
         },
         getHotelsByLocationAndDates: (state, action: PayloadAction<FindHotelsRequest>) => {
-            state.requestHotelsData = action.payload;
-        }
-    }
-})
-
-
+            state.requestedHotelsData = action.payload;
+        },
+    },
+});

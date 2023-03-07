@@ -1,0 +1,50 @@
+@use "src/styles/variables";
+
+@mixin flex-align-center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin scroll-setup {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 2px;
+        margin-left: 2px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #e7e7e7;
+        margin-left: 12px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #41522e;
+        margin-left: 2px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        // background: dodgerblue;
+    }
+}
+
+@mixin svg-fill($fill-color, $hover-color) {
+    & > path {
+        fill: $fill-color;
+        &:hover {
+            fill: $hover-color;
+        }
+    }
+}
+@mixin svg-stroke($stroke-color, $over-stroke-color) {
+    //@include svg-fill()
+    & > path {
+        stroke: $stroke-color;
+        &:hover {
+            stroke: $over-stroke-color;
+        }
+    }
+}

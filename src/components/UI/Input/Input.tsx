@@ -1,8 +1,10 @@
-import React, {AriaAttributes, DetailedHTMLProps, InputHTMLAttributes,} from "react";
+import React, { AriaAttributes, DetailedHTMLProps, InputHTMLAttributes } from "react";
+
 import "./Input.scss";
 
 export interface InputProps
-    extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, AriaAttributes {
+    extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+        AriaAttributes {
     label?: string;
     helperText?: string;
     error?: boolean;
@@ -11,18 +13,10 @@ export interface InputProps
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    ({helperText, error, label, className, endItem, ...props}, ref) => {
+    ({ helperText, error, label, className, endItem, ...props }, ref) => {
         return (
             <div className={"input"}>
-                {label &&
-                    <div
-                        className={error
-                        ? `input__label input__label--invalid`
-                        : `input__label`}
-                    >
-                        {label}
-                    </div>
-                }
+                {label && <div className={error ? `input__label input__label--invalid` : `input__label`}>{label}</div>}
 
                 <div className="input__wrapper">
                     <input
@@ -30,8 +24,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                             error
                                 ? `input__field input__field--invalid`
                                 : className
-                                    ? `input__field ${className}`
-                                    : `input__field`
+                                ? `input__field ${className}`
+                                : `input__field`
                         }
                         {...props}
                         ref={ref}
@@ -40,13 +34,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 </div>
 
                 {helperText && (
-                    <div
-                        className={
-                            error
-                                ? `input__helper-text input__helper-text--invalid`
-                                : `input__helper-text`
-                        }
-                    >
+                    <div className={error ? `input__helper-text input__helper-text--invalid` : `input__helper-text`}>
                         {helperText}
                     </div>
                 )}

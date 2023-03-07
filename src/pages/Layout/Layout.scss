@@ -1,11 +1,11 @@
 .main-container {
-  height: calc(100vh - 91px);
-  min-width: 1048px;
-  &__loader{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1048px;
-    height: 90vh;
-  }
+    height: calc(100vh - 91px);
+    min-width: 1048px;
+    &__loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1048px;
+        height: 90vh;
+    }
 }

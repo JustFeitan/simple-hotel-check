@@ -1,64 +1,96 @@
-@use 'src/styles/variables';
+@use "src/styles/variables";
 
 .hotels-page {
-  height: calc(100% - 26px);
-  margin-bottom: 26px;
-  display: flex;
-  justify-content: space-between;
+    height: calc(100% - 26px);
+    margin-bottom: 26px;
+    display: flex;
+    justify-content: space-between;
+}
 
-  &__left-blocks {
+//List of favorites hotels with sorting
+.hotels-page .hotels-page__left-blocks {
     width: 360px;
     height: 100%;
     display: flex;
     flex-direction: column;
 
     &__location {
-      margin-bottom: 24px;
+        margin-bottom: 24px;
     }
 
     &__favorites {
-      height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        max-height: 392px;
+        padding-right: 18px;
+
+        &__title {
+            margin-bottom: 32px;
+            font-weight: 500;
+            font-size: variables.$big-font-size;
+            line-height: 28px;
+        }
+
+        &__sort {
+            display: flex;
+            margin-bottom: 13px;
+            & > button + button {
+                margin-left: 8px;
+            }
+        }
+
+        height: 400px;
     }
-  }
-
-
 }
 
+//Block ith slider and result of search hotels
 .hotels-page .hotels-page__results {
-  width: 664px;
-  justify-content: start;
+    width: 664px;
+    justify-content: start;
+    padding: 48px 32px 52px 32px;
 
-  &__favorites-count {
-    align-self: start;
-    font-weight: 300;
-    font-size: 17px;
-    line-height: 22px;
-    margin-bottom: 30px;
-  }
+    &__header {
+        width: 100%;
+        margin: 0 0 28px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-  &__header {
-    width: 100%;
-    margin: 0 0 28px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        &__location {
+            margin: 0;
+            font-weight: 500;
+            font-size: variables.$large-font-size;
+            line-height: 38px;
 
-    &__location {
-      margin: 0;
-      font-weight: 500;
-      font-size: variables.$large-font-size;
-      line-height: 38px;
+            & svg {
+                margin: 0 11px;
+            }
+        }
 
-      & svg {
-        margin: 0 10px;
-      }
+        &__check-in-date {
+            color: variables.$tertiary-color;
+            margin: 0;
+            font-weight: 400;
+            font-size: variables.$big-font-size;
+            line-height: 28px;
+        }
     }
 
-    &__check-in-date {
-      margin: 0;
-      font-weight: 400;
-      font-size: variables.$big-font-size;
-      line-height: 28px;
+    &__favorites-count {
+        & span {
+            margin-left: 8px;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 22px;
+            letter-spacing: -0.408px;
+        }
+        letter-spacing: -0.408px;
+        align-self: start;
+        font-weight: 300;
+        font-size: 17px;
+        line-height: 22px;
+        margin-bottom: 20px;
     }
-  }
 }

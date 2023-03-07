@@ -1,4 +1,4 @@
-import {ILocationGeo} from "./ILocationGeo";
+import { ILocationGeo } from "./ILocationGeo";
 
 export interface IHotelLocation {
     country: string;
