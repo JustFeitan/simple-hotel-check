@@ -42,7 +42,6 @@ const HotelsPage: FC = () => {
         };
         updateFavoriteHotelsMutation(favoriteHotelsRequest);
     }, [requestedHotelsData?.checkOutDate, requestedHotelsData?.checkOutDate]);
-
     //Sorting favorites hotels hook
     const {
         sortedItems: sortedFavoriteHotels,
@@ -65,6 +64,7 @@ const HotelsPage: FC = () => {
     const handleSortByPriceClick = () => {
         sortDataBy("priceAvg");
     };
+    console.log(hotels, sortedFavoriteHotels);
 
     return (
         <div className="hotels-page">
@@ -93,9 +93,9 @@ const HotelsPage: FC = () => {
                             Цена
                         </SortButton>
                     </div>
-                    {!!sortedFavoriteHotels.length && (
+                    {!sortedFavoriteHotels && !!sortedFavoriteHotels!.length && (
                         <HotelsList
-                            hotels={sortedFavoriteHotels}
+                            hotels={sortedFavoriteHotels!}
                             error={error}
                             isLoading={isLoading}
                             renderItem={(hotel) => <FavoriteHotelsListItem key={hotel.hotelId} hotel={hotel} />}
@@ -118,9 +118,12 @@ const HotelsPage: FC = () => {
                 <HotelsImageSlider items={SliderImages} />
                 <span className="hotels-page__results__favorites-count">
                     Добавлено в Избранное:
-                    <span>{sortedFavoriteHotels.length}</span> {favoriteCountNoun}
+                    {!sortedFavoriteHotels && !!sortedFavoriteHotels!.length && (
+                        <span>{sortedFavoriteHotels!.length}</span>
+                    )}
+                    {favoriteCountNoun}
                 </span>
-                {!hotels && !isResultHotelsLoading ? (
+                {!hotels.length && !isResultHotelsLoading ? (
                     <h3>Не было найдено таких отелей, прпробуйте выбрать другие параметры поиска</h3>
                 ) : (
                     <HotelsList

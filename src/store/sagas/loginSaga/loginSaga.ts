@@ -22,6 +22,5 @@ export function* loginUser(action: PayloadAction<IUser>) {
 }
 
 export function* watchLoginUser() {
-    console.log("watch saga");
     yield takeEvery(authActions.login.type, loginUser);
 }

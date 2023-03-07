@@ -5,12 +5,12 @@ type SortingConfig<T> = { field: string; sortType: SortingOrder };
 
 export function useSortByField<T>(initialData: T[], initialSortConfig?: SortingConfig<T>, updateParams?: any[]) {
     if (!updateParams) updateParams = [];
-    console.log("update params", ...updateParams);
     const [sortBy, setSortBy] = useState<string | undefined>(initialSortConfig?.field);
     const [sortType, setSortType] = useState<"DESC" | "ASC">(initialSortConfig?.sortType ?? "ASC");
     const sortedItems = useMemo(() => {
-        console.log("sort working");
+        if (!initialData) return;
         if (!sortBy) return initialData;
+
         return [...initialData].sort((a: T, b: T) => {
             const aField = getField(a, sortBy);
             const bField = getField(b, sortBy);

@@ -1,4 +1,7 @@
+import { addDays } from "date-fns";
+
 export const formatDateToInputValue = (date: Date) => {
     const copyDate = new Date(date);
-    return copyDate.toISOString().slice(0, 10);
+    const today = addDays(copyDate, 1);
+    return today.toISOString().slice(0, 10);
 };

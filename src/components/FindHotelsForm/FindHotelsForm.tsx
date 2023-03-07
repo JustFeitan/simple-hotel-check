@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { format } from "date-fns";
+import { addDays, addYears, format } from "date-fns";
 import React, { FC, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -23,7 +23,7 @@ interface FindHotelsFormState {
     location: string;
     daysOfStay: number;
 }
-
+const today = new Date();
 const findHotelsFormSchema = yup.object().shape({
     location: yup
         .string()
@@ -34,11 +34,14 @@ const findHotelsFormSchema = yup.object().shape({
         .typeError("Введите количество дней проживания")
         .min(1, "Неверная количество дней")
         .max(31, "Нельзя забранировать больше чем на месяц"),
-    checkInDate: yup.date().typeError("Укажите дату заселения"),
+    checkInDate: yup
+        .date()
+        .typeError("Укажите дату заселения")
+        .min(addDays(today, -1), "Укажите корректную дату заселения")
+        .max(addYears(today, 1), "Укажите корректную дату заселения"),
 });
 
 const FindHotelsForm: FC = () => {
-    const today = new Date();
     const { getHotelsByLocationAndDates } = useActions(findHotelsActions);
     //Form validation
     const {
