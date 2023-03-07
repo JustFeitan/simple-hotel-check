@@ -8,9 +8,7 @@ export function useSortByField<T>(initialData: T[], initialSortConfig?: SortingC
     const [sortBy, setSortBy] = useState<string | undefined>(initialSortConfig?.field);
     const [sortType, setSortType] = useState<"DESC" | "ASC">(initialSortConfig?.sortType ?? "ASC");
     const sortedItems = useMemo(() => {
-        if (!initialData) return;
         if (!sortBy) return initialData;
-
         return [...initialData].sort((a: T, b: T) => {
             const aField = getField(a, sortBy);
             const bField = getField(b, sortBy);

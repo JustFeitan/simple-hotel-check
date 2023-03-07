@@ -93,11 +93,10 @@ const HotelsPage: FC = () => {
                             Цена
                         </SortButton>
                     </div>
-                    {!sortedFavoriteHotels && !!sortedFavoriteHotels!.length && (
+                    {!!sortedFavoriteHotels.length && (
                         <HotelsList
                             hotels={sortedFavoriteHotels!}
                             error={error}
-                            isLoading={isLoading}
                             renderItem={(hotel) => <FavoriteHotelsListItem key={hotel.hotelId} hotel={hotel} />}
                         />
                     )}
@@ -117,17 +116,12 @@ const HotelsPage: FC = () => {
                 )}
                 <HotelsImageSlider items={SliderImages} />
                 <span className="hotels-page__results__favorites-count">
-                    Добавлено в Избранное:
-                    {!sortedFavoriteHotels && !!sortedFavoriteHotels!.length && (
-                        <span>{sortedFavoriteHotels!.length}</span>
-                    )}
-                    {favoriteCountNoun}
+                    Добавлено в Избранное: <span>{sortedFavoriteHotels?.length ?? 0}</span> {favoriteCountNoun}
                 </span>
                 {!hotels.length && !isResultHotelsLoading ? (
                     <h3>Не было найдено таких отелей, прпробуйте выбрать другие параметры поиска</h3>
                 ) : (
                     <HotelsList
-                        isLoading={isResultHotelsLoading}
                         hotels={hotels}
                         error={resultHotelsError}
                         renderItem={(hotel) => <HotelsListItem key={hotel.hotelId} hotel={hotel} />}
