@@ -46,7 +46,9 @@ function* workUpdateHotelsByIdAndDatesSaga({
                 })
             )
         );
-        const newFavoriteHotels = newFavoriteHotelsResponse.map((hotel) => hotel.data);
+        const newFavoriteHotels = newFavoriteHotelsResponse
+            .map((hotel) => hotel.data)
+            .filter((hotel) => hotel !== null);
         yield put(usersFavoriteHotelsActions.setFavoriteHotels(newFavoriteHotels));
     } catch (e) {
         if (isErrorWithMessage(e)) {

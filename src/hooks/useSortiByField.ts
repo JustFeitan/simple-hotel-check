@@ -20,7 +20,6 @@ export function useSortByField<T>(initialData: T[], initialSortConfig?: SortingC
             return 0;
         });
     }, [initialData, sortBy, sortType, ...updateParams]);
-
     function getField(obj: any, field: string) {
         const fieldParts = field.split(".");
         let result = obj;

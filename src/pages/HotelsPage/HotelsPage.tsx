@@ -32,7 +32,6 @@ const HotelsPage: FC = () => {
     } = useAppSelector(findHotelsStateSelector);
     const { updateFavoriteHotelsMutation } = useActions(usersFavoriteHotelsActions);
     const favoriteCountNoun = useNounForNumber(usersFavoriteHotels.length, "отель", "отеля", "отелей");
-
     //Update favorite hotels on date request change
     useEffect(() => {
         if (!requestedHotelsData?.checkOutDate || !requestedHotelsData?.checkOutDate) return;
@@ -56,7 +55,6 @@ const HotelsPage: FC = () => {
         },
         [requestedHotelsData?.checkOutDate, requestedHotelsData?.checkInDate]
     );
-
     const handleSortByRatingClick = () => {
         sortDataBy("stars");
     };
