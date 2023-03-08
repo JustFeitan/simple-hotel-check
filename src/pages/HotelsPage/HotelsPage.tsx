@@ -64,7 +64,6 @@ const HotelsPage: FC = () => {
     const handleSortByPriceClick = () => {
         sortDataBy("priceAvg");
     };
-    console.log(hotels, sortedFavoriteHotels);
 
     return (
         <div className="hotels-page">
@@ -95,6 +94,7 @@ const HotelsPage: FC = () => {
                     </div>
                     {!!sortedFavoriteHotels.length && (
                         <HotelsList
+                            isLoading={isLoading}
                             hotels={sortedFavoriteHotels!}
                             error={error}
                             renderItem={(hotel) => <FavoriteHotelsListItem key={hotel.hotelId} hotel={hotel} />}
@@ -122,6 +122,7 @@ const HotelsPage: FC = () => {
                     <h3>Не было найдено таких отелей, прпробуйте выбрать другие параметры поиска</h3>
                 ) : (
                     <HotelsList
+                        isLoading={isResultHotelsLoading}
                         hotels={hotels}
                         error={resultHotelsError}
                         renderItem={(hotel) => <HotelsListItem key={hotel.hotelId} hotel={hotel} />}

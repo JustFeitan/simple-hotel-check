@@ -13,7 +13,7 @@ export interface CustomButtonProps
     rightIcon?: JSX.Element;
 }
 
-const MyPrimaryButton: FC<CustomButtonProps> = ({
+const Button: FC<CustomButtonProps> = ({
     fullWidth,
     width = 145,
     fontSize,
@@ -44,4 +44,4 @@ const MyPrimaryButton: FC<CustomButtonProps> = ({
     );
 };
 
-export default MyPrimaryButton;
+export default Button;

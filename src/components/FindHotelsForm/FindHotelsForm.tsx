@@ -5,10 +5,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { CitiesData } from "../../data/CitiesData";
-import { formatDateToInputValue } from "../../helpers/dateHelpers/formatDateToInputValue";
 import { formatDateWithFnsFormat } from "../../helpers/dateHelpers/formatDateWithFnsFormat";
 import { getCheckOutDate } from "../../helpers/dateHelpers/getCheckOutDate";
-import { plusOneYear } from "../../helpers/dateHelpers/plusOneYear";
 import { useActions } from "../../hooks/redux";
 import { FindHotelsRequest } from "../../models/hotels";
 import { findHotelsActions } from "../../store/reducers/hotelsSlice";
@@ -23,6 +21,7 @@ interface FindHotelsFormState {
     location: string;
     daysOfStay: number;
 }
+
 const today = new Date();
 const findHotelsFormSchema = yup.object().shape({
     location: yup
@@ -32,7 +31,7 @@ const findHotelsFormSchema = yup.object().shape({
     daysOfStay: yup
         .number()
         .typeError("Введите количество дней проживания")
-        .min(1, "Неверная количество дней")
+        .min(1, "Неверное количество дней")
         .max(31, "Нельзя забранировать больше чем на месяц"),
     checkInDate: yup
         .date()
@@ -51,12 +50,12 @@ const FindHotelsForm: FC = () => {
         formState: { errors, defaultValues },
         handleSubmit,
     } = useForm<FindHotelsFormState>({
+        mode: "onBlur",
         defaultValues: {
             location: "Москва",
             checkInDate: format(today, "yyyy-MM-dd"),
             daysOfStay: 1,
         },
-        mode: "onBlur",
         resolver: yupResolver(findHotelsFormSchema),
     });
 
@@ -99,8 +98,8 @@ const FindHotelsForm: FC = () => {
                 helperText={errors.checkInDate?.message}
                 {...register("checkInDate")}
                 label="Дата заселения"
-                min={formatDateToInputValue(today)}
-                max={formatDateToInputValue(plusOneYear(today))}
+                min={format(today, "yyyy-MM-dd")}
+                max={format(addYears(today, 1), "yyyy-MM-dd")}
             />
             <Input
                 error={!!errors.daysOfStay}

@@ -13,6 +13,11 @@
     &:hover {
         background: transparent;
         color: #99a0a3;
+        &:active {
+            background: transparent;
+            color: variables.$tertiary-color;
+            border: 1px solid variables.$tertiary-color;
+        }
     }
 
     &--active {

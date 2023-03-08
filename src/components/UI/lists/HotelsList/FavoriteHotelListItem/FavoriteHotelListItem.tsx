@@ -3,10 +3,8 @@ import { FC, useMemo } from "react";
 
 import { formatDateWithFnsFormat } from "../../../../../helpers/dateHelpers/formatDateWithFnsFormat";
 import { formatPrice } from "../../../../../helpers/formatPrice";
-import { useActions } from "../../../../../hooks/redux/useActions";
-import { useAppSelector } from "../../../../../hooks/redux/useAppSelector";
-import { useHeartActiveStatus } from "../../../../../hooks/redux/useHeartActiveStatus";
-import { useNounForNumber } from "../../../../../hooks/useNounForNumber";
+import { useNounForNumber } from "../../../../../hooks";
+import { useActions, useAppSelector, useHeartActiveStatus } from "../../../../../hooks/redux";
 import { IHotel } from "../../../../../models/hotels";
 import { findHotelsRequestedDataSelector } from "../../../../../store/reducers/hotelsSlice";
 import { usersFavoriteHotelsActions } from "../../../../../store/reducers/usersAndFavoriteHotelsSlice";
