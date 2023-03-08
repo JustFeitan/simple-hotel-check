@@ -3,6 +3,17 @@
 Необходимо реализовать web приложение для поиска отелей, которое имеет
 два экрана.
 
+## Использеумый стэк
+
+### Фронт:
+
+-   React
+-   Typescript
+-   Redux + Redux Toolkit + Redux-saga
+-   CSS/Scss
+-   react-hook-form
+-   react-slick
+
 ## Available Scripts
 
 In the project directory, you can run:
