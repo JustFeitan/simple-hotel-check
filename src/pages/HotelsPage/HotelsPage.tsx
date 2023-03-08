@@ -33,7 +33,6 @@ const HotelsPage: FC = () => {
     const { updateFavoriteHotelsMutation } = useActions(usersFavoriteHotelsActions);
     const favoriteCountNoun = useNounForNumber(usersFavoriteHotels.length, "отель", "отеля", "отелей");
     //Update favorite hotels on date request change
-    console.log(hotels);
     useEffect(() => {
         if (!requestedHotelsData?.checkOutDate || !requestedHotelsData?.checkOutDate) return;
         const favoriteHotelsRequest: Omit<IFavoriteHotelsRequest, "hotelId"> = {
