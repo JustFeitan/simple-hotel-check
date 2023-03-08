@@ -1,7 +1,7 @@
 # Тестовое задание для Junior Frontend Developer
 
 Web приложение для поиска отелей, которое имеет два экрана.  
-Сылка на развернутую на хостинге версию(Netify): [simple-hotels-check.netlify.app](simple-hotels-check.netlify.app)
+Сылка на развернутую на хостинге версию(Netify): [simple-hotels-check.netlify.app](https://simple-hotels-check.netlify.app)
 ## Техническое задание:
 1. Страница авторизации. Почта и пароль могут быть любыми, но должны
    проходить стандартную валидацию.
