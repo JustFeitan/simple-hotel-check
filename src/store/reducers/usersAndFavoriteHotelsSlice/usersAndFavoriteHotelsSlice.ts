@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { IFavoriteHotelsRequest, IHotel } from "../../../models/hotels";
+import { IFavoriteHotel } from "../../../models/hotels";
 
 interface FavoriteHotelsState {
-    usersFavoriteHotels: IHotel[];
+    usersFavoriteHotels: IFavoriteHotel[];
     isLoading: boolean;
     error: string;
 }
@@ -15,35 +15,34 @@ const initialState: FavoriteHotelsState = {
 };
 
 export const usersFavoriteHotelsSlice = createSlice({
-    name: "favorite/hotels",
+    name: "userFavorite/hotels",
     initialState,
     reducers: {
-        addFavoriteHotels: (state, action: PayloadAction<IHotel>) => {
+        addUsersFavoriteHotels: (state, action: PayloadAction<IFavoriteHotel>) => {
             state.usersFavoriteHotels.push(action.payload);
             state.isLoading = false;
             state.error = "";
         },
-        setFavoriteHotels: (state, action: PayloadAction<IHotel[]>) => {
+        setUsersFavoriteHotels: (state, action: PayloadAction<IFavoriteHotel[]>) => {
             state.usersFavoriteHotels = action.payload;
             state.isLoading = false;
             state.error = "";
         },
-        removeFavoriteHotel: (state, action: PayloadAction<IHotel[]>) => {
+        removeUsersFavoriteHotel: (state, action: PayloadAction<IFavoriteHotel[]>) => {
             state.usersFavoriteHotels = action.payload;
             state.isLoading = false;
             state.error = "";
         },
 
-        setFavoriteHotelsLoading: (state) => {
+        setUsersFavoriteHotelsLoading: (state) => {
             state.isLoading = true;
         },
-        setFavoriteHotelsError: (state, action: PayloadAction<string>) => {
+        setUsersFavoriteHotelsError: (state, action: PayloadAction<string>) => {
             state.error = action.payload;
             state.isLoading = false;
         },
 
-        addFavoriteHotelMutation: (state, action: PayloadAction<IHotel>) => {},
-        removeFavoriteHotelMutation: (state, action: PayloadAction<number>) => {},
-        updateFavoriteHotelsMutation: (state, action: PayloadAction<Omit<IFavoriteHotelsRequest, "hotelId">>) => {},
+        addUsersFavoriteHotelMutation: (state, action: PayloadAction<IFavoriteHotel>) => {},
+        removeUsersFavoriteHotelMutation: (state, action: PayloadAction<number>) => {},
     },
 });

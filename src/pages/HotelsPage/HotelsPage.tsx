@@ -14,15 +14,15 @@ import { formatDateWithFnsFormat } from "../../helpers/dateHelpers/formatDateWit
 import { useNounForNumber, useSortByField } from "../../hooks";
 import { useActions, useAppSelector } from "../../hooks/redux";
 import { IFavoriteHotelsRequest } from "../../models/hotels";
+import { favoriteHotelsActions, favoriteHotelsStateSelector } from "../../store/reducers/favoriteHotelsSlice";
 import { findHotelsStateSelector } from "../../store/reducers/hotelsSlice";
-import {
-    usersFavoriteHotelsActions,
-    usersFavoriteHotelsStateSelector,
-} from "../../store/reducers/usersAndFavoriteHotelsSlice";
+import { usersFavoriteHotelsStateSelector } from "../../store/reducers/usersAndFavoriteHotelsSlice";
 import "./HotelsPage.scss";
 
 const HotelsPage: FC = () => {
-    const { usersFavoriteHotels, isLoading, error } = useAppSelector(usersFavoriteHotelsStateSelector);
+    const { usersFavoriteHotels } = useAppSelector(usersFavoriteHotelsStateSelector);
+    const { favoriteHotels, error, isLoading } = useAppSelector(favoriteHotelsStateSelector);
+    console.log(usersFavoriteHotels);
     //Search hotels result
     const {
         hotels,
@@ -30,8 +30,9 @@ const HotelsPage: FC = () => {
         error: resultHotelsError,
         requestedHotelsData,
     } = useAppSelector(findHotelsStateSelector);
-    const { updateFavoriteHotelsMutation } = useActions(usersFavoriteHotelsActions);
-    const favoriteCountNoun = useNounForNumber(usersFavoriteHotels.length, "отель", "отеля", "отелей");
+    const { updateFavoriteHotelsMutation1 } = useActions(favoriteHotelsActions);
+    const favoriteCountNoun = useNounForNumber(favoriteHotels.length, "отель", "отеля", "отелей");
+
     //Update favorite hotels on date request change
     useEffect(() => {
         if (!requestedHotelsData?.checkOutDate || !requestedHotelsData?.checkOutDate) return;
@@ -39,8 +40,9 @@ const HotelsPage: FC = () => {
             checkOutDate: requestedHotelsData!.checkOutDate,
             checkInDate: requestedHotelsData!.checkInDate,
         };
-        updateFavoriteHotelsMutation(favoriteHotelsRequest);
-    }, [requestedHotelsData?.checkOutDate, requestedHotelsData?.checkOutDate]);
+        updateFavoriteHotelsMutation1(favoriteHotelsRequest);
+    }, [requestedHotelsData?.checkOutDate, requestedHotelsData?.checkOutDate, usersFavoriteHotels.length]);
+
     //Sorting favorites hotels hook
     const {
         sortedItems: sortedFavoriteHotels,
@@ -48,7 +50,7 @@ const HotelsPage: FC = () => {
         sortType,
         sortDataBy,
     } = useSortByField(
-        usersFavoriteHotels,
+        favoriteHotels,
         {
             field: "stars",
             sortType: "ASC",
@@ -117,7 +119,7 @@ const HotelsPage: FC = () => {
                     Добавлено в Избранное: <span>{sortedFavoriteHotels?.length ?? 0}</span> {favoriteCountNoun}
                 </span>
                 {!hotels.length && !isResultHotelsLoading ? (
-                    <h3>Не было найдено таких отелей, прпробуйте выбрать другие параметры поиска</h3>
+                    <h3>По данному запросу нет отелей, попробуйте выбрать другие параметры поиска</h3>
                 ) : (
                     <HotelsList
                         isLoading={isResultHotelsLoading}

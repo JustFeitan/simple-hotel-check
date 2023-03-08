@@ -4,8 +4,8 @@ import { FC, useMemo } from "react";
 import { formatDateWithFnsFormat } from "../../../../../helpers/dateHelpers/formatDateWithFnsFormat";
 import { formatPrice } from "../../../../../helpers/formatPrice";
 import { useNounForNumber } from "../../../../../hooks";
-import { useActions, useAppSelector, useHeartActiveStatus } from "../../../../../hooks/redux";
-import { IHotel } from "../../../../../models/hotels";
+import { useActions, useAppSelector, useAuth, useHeartActiveStatus } from "../../../../../hooks/redux";
+import { IFavoriteHotel, IHotel } from "../../../../../models/hotels";
 import { findHotelsRequestedDataSelector } from "../../../../../store/reducers/hotelsSlice";
 import { usersFavoriteHotelsActions } from "../../../../../store/reducers/usersAndFavoriteHotelsSlice";
 import HeartIcon from "../../../Icons/HeartIcon";
@@ -18,8 +18,10 @@ interface HotelsListItemProps {
 
 const FavoriteHotelsListItem: FC<HotelsListItemProps> = ({ hotel }) => {
     const requestedHotelsData = useAppSelector(findHotelsRequestedDataSelector);
-    const { addFavoriteHotelMutation, removeFavoriteHotelMutation } = useActions(usersFavoriteHotelsActions);
+    const { addUsersFavoriteHotelMutation, removeUsersFavoriteHotelMutation } = useActions(usersFavoriteHotelsActions);
+    const user = useAuth();
     const heartActive = useHeartActiveStatus(hotel);
+
     const daysOfStay = useMemo(() => {
         if (!requestedHotelsData?.checkInDate || !requestedHotelsData?.checkOutDate) return;
         return differenceInDays(
@@ -32,12 +34,14 @@ const FavoriteHotelsListItem: FC<HotelsListItemProps> = ({ hotel }) => {
 
     const handleFavoriteBtnClick = () => {
         if (heartActive) {
-            removeFavoriteHotelMutation(hotel.hotelId);
+            removeUsersFavoriteHotelMutation(hotel.hotelId);
         } else {
-            const newFavoriteHotel: IHotel = {
-                ...hotel,
+            const newFavoriteHotel: IFavoriteHotel = {
+                id: user!.email + "" + hotel.hotelId,
+                hotelId: hotel.hotelId,
+                userEmail: user!.email,
             };
-            addFavoriteHotelMutation(newFavoriteHotel);
+            addUsersFavoriteHotelMutation(newFavoriteHotel);
         }
     };
 

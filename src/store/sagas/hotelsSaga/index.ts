@@ -1,18 +1,15 @@
 import { all, call, spawn } from "redux-saga/effects";
 
+import { watchUpdateFavoriteHotelsByIdAndDatesSaga } from "./favoriteHotelsUserSaga";
 import { watchFindHotelsSaga } from "./findHotelsSaga";
-import {
-    watchAddFavoriteHotelsSaga,
-    watchDeleteFavoriteHotelsSaga,
-    watchUpdateHotelsByIdAndDatesSaga,
-} from "./userFavoriteHotelsSaga";
+import { watchAddFavoriteHotelsSaga, watchDeleteFavoriteHotelsSaga } from "./userFavoriteHotelsSaga";
 
 export function* hotelsSagas() {
     const hotelsSagas = [
         watchFindHotelsSaga,
         watchAddFavoriteHotelsSaga,
         watchDeleteFavoriteHotelsSaga,
-        watchUpdateHotelsByIdAndDatesSaga,
+        watchUpdateFavoriteHotelsByIdAndDatesSaga,
     ];
 
     yield all(
