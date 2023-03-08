@@ -21,14 +21,17 @@ export const usersFavoriteHotelsSlice = createSlice({
         addFavoriteHotels: (state, action: PayloadAction<IHotel>) => {
             state.usersFavoriteHotels.push(action.payload);
             state.isLoading = false;
+            state.error = "";
         },
         setFavoriteHotels: (state, action: PayloadAction<IHotel[]>) => {
             state.usersFavoriteHotels = action.payload;
             state.isLoading = false;
+            state.error = "";
         },
         removeFavoriteHotel: (state, action: PayloadAction<IHotel[]>) => {
             state.usersFavoriteHotels = action.payload;
             state.isLoading = false;
+            state.error = "";
         },
 
         setFavoriteHotelsLoading: (state) => {

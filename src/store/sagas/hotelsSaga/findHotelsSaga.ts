@@ -1,9 +1,9 @@
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { call, put, select } from "redux-saga/effects";
 
 import { hotelsService } from "../../../services/hotelsService";
 
-import { isErrorWithMessage } from "../../../helpers/isErrorWithMessage";
+import { isAxiosErrorResponse, isErrorWithMessage, toAxiosError } from "../../../helpers/isErrorWithMessage";
 import { cancelExcessRequests } from "../../../helpers/sagaHelpers/cancelExcessRequests";
 import { FindHotelsRequest, IHotel } from "../../../models/hotels";
 import { findHotelsActions, findHotelsRequestedDataSelector } from "../../reducers/hotelsSlice";
@@ -19,8 +19,9 @@ function* workFindHotelsSaga(signal: AbortSignal) {
         );
         yield put(findHotelsActions.setHotels(response.data));
     } catch (e) {
-        if (isErrorWithMessage(e)) {
-            yield put(findHotelsActions.setHotelsError(e.message));
+        const AxiosError = toAxiosError(e);
+        if (isErrorWithMessage(AxiosError.response!.data)) {
+            yield put(findHotelsActions.setHotelsError(AxiosError.response!.data.message));
         }
     }
 }

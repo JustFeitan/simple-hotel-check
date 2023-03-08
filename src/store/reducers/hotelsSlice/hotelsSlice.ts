@@ -23,6 +23,7 @@ export const findHotelsSlice = createSlice({
         setHotels: (state, action: PayloadAction<IHotel[]>) => {
             state.hotels = action.payload;
             state.isLoading = false;
+            state.error = "";
         },
         setHotelsLoading: (state) => {
             state.isLoading = true;

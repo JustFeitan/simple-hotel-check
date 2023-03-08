@@ -36,6 +36,8 @@ function* workUpdateHotelsByIdAndDatesSaga({
     payload: favoriteHotelsRequestData,
 }: PayloadAction<IFavoriteHotelsRequest>) {
     try {
+        console.log("upddate work");
+
         yield put(usersFavoriteHotelsActions.setFavoriteHotelsLoading());
         const favoriteHotels: IHotel[] = yield select(usersFavoriteHotelsSelector);
         const newFavoriteHotelsResponse: AxiosResponse<IHotel>[] = yield all(
